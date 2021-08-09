@@ -1,6 +1,3 @@
-# basic_interview_questions
-A self prepared list of basic interview questions.
-
 Technical Round:-
 
 	1. Explain your mini project.
@@ -133,19 +130,93 @@ Technical Round:-
 
 			3. Wild Pointer - uninitialized pointers. They point to some arbitrary location and can cause a program crash.
 
+			4. Dangling Pointer - A pointer that points to a location which has been deleted is called a dangling pointer.
+
+			5. Near Pointer - can store 16-bit addresses within current segment. We can acess only 64kb of data at a time.
+
+			6. Far Pointer - can store 32-bit addresses, outside of current segment. Compiler allocates a segment register to store segment address, then another register to store offset within current segment.
+
+			7. Huge Pointer - can also typically store 32-bit and outside segment. Segment not fixed, can be modified.
 
 
 	9. What are Data Type ranges in C++?
+
+		prefix:
+			u = unsigned
+			s = signed
+			l = long
+			sh = short
+
+		Types 			Bytes		Range
+		char 			1 			(-128, 127)
+		uchar 			1 			(0, 255)
+		schar 			1 			(-128, 127)
+		int 			4 			(-2^(4*8), 2^(4*8) - 1)
+		uint 			4 			(0, 2 * 2^32 - 1)
+		sint 			4 			(-2^32, 2^32 - 1)
+		ushint			2 			(0, 2 * 2^16 - 1)
+		sshint 			2 			(-2^16, 2^16 - 1)
+		lint 			8 			(-2^64, 2^64 - 1)
+		slint 			8 			lint
+		ulint 			8 			(0, * 2 * 2^64 - 1)
+		llint 			8 			(-2^63, 2^63 - 1)
+		ullint 			8 			(0, 2^128 - 1)
+		float 			4
+		double 			8
+		ldouble 		12
+		wchar_t 		2 or 4
+
+
 	10. What is void data type?
+
+		- Void is a data type in C/C++ which has no value and no operations. It represents a lack of type. It is generally used to indicate that the function does not return anything. Or it can also be used as a generic pointer which can be typecasted to any type.
 	
 	11. Which operator in SQL performs pattern-matching?
+		LIKE operator, used in a WHERE clause.
+		Example:
+			SELECT * from table
+			WHERE name LIKE pattern
+
+		pattern:
+			'a%' - starting with 'a'
+			'%a' - ending with 'a'
+			'%at%' - values that contain 'at'
+			'_r%' - values having 'r' in the second position
+			'a_%' - values starting with 'a' and at least 2 characters in length
+			'a__%' - values starting with 'a' and at least 3 chars in length
+			'a%0' - values that start with 'a' and end with 'o'
+
 	12. What is the purpose of DESC in SQL?
+		Used in ORDER BY DESC - meaning to sort data in descending order.
+
+		ex.
+			SELECT * FROM table
+				ORDER BY attr DESC
+
 	13. Give some advantages of DBMS.
+		Advantages:-
+			1. Data Integrity
+			2. Data Consistency
+			3. Reduced Data Redundancy
+			4. Security against unauthorized access or accidental override
+			5. Centralized access to data - meaning all applications have access to same consistent data
+			6. Backup and Recovery
+
 	14. What is NULL pointer?
+		It is a pointer that does not point to any location in particular.
+		Used to:-
+			1. Initialize pointers not pointing to a particular location.
+			2. Used in Linked Lists and etc. to indicate end.
+
 	15. What is a static variable?
+
+
 	16. You're from ECE, why IT industry?
-	17. How is your programming knowledge?
+		Since class 12th, I have been learning C++, and am deeply interested in Programming. All the skills I've honed are oriented towards programming. I chose ECE in order to learn how computer work internally, but my interests have always lied in programming.
+
 	18. What is your favorite language?
+		C++ and Python.
+
 	19. What is Python. Features of Python.
 		- Python is a high-level, interpreted, object-oriented programming language. It is a highly readable language, bearing close resemblance with the English language. It is easy to learn and work with.
 
@@ -161,25 +232,88 @@ Technical Round:-
 			- Python has its applications is Machine Learning, Web Development, Data Science, Aeronautics and various other fields.
 
 	20. What are the different types of loops?
+		Two types of loops:-
+			1. Entry-controlled
+				- Condition is tested beforing executing loop statements
+					- For-loop
+					- While-loop
+			2. Exit-controlled
+				- Condition is tested after executing the loop statements
 
-	21. What are the different data types? How are data types different from Data Structures?
 	22. Tell me about your project.
-	23. Difference b/w C++ and Java.
+		- Morning
+
 	24. Difference b/w C++ and Python.
-	25. Difference b/w C++ and C.
-	26. Layers of OSI Model.
-	27. Write a program to print Fibbonacci series.
+		- Both are general-purpose programming languages.
+		- C++ was started in the 60s, and Python in the 90s.
+		- Both are OOP languages.
+
+		- Python employs lesser lines of code to perform the same task in C++.
+		- Python is an interpreted language, whereas C++ is a compiled language.
+		- Python is slower compared to C++.
+		- Python is a dynamically typed language, whereas C++ is a statically typed language.
+
+	27. Write a program to print n fibbonacci terms.
+		Python:
+			def fib(n):
+				if n in [0, 1]: return n
+				else: return fib(n - 1) + fib(n - 2)
+
+			if __name__ == '__main__':
+				n = int(input())
+				for i in range(1, n + 1):
+					print(fib(i))
+
+		C++:
+			int fib(int n) {
+				return (n == 0 || n == 1 ? n : fib(n - 1) + fib(n -2));
+			}
+
+			int main() {
+				int n; cin >> n;
+				for (int i = 0; i <= n; ++i) cout << fibb(i) << endl;
+			}
+
 	28. What is an ER Model?
 	29. Difference between DBMS and RDBMS.
 	30. Explain Entity and Attribute.
 
 	31. What is a pointer?
+		A pointer is a type of variable in C and C++, that can hold address of a type. They are generally used to hold addresses of other variables.
+
+		Uses:-
+			1. To access array elements.
+			2. Used in data structures like Linked Lists, etc.
+			3. Used to allocate and deallocate memory.
+			4. Used to pass arguments by reference.
+
 	32. Why do we use #include in C?
 	33. Difference b/w pre-increment and post-increment.
+		Pre-increment - used to increment variable by 1 before using its value.
+		Post-increment - used to increment variable value by 1 after using its value.
+
 	34. How much do you rate yourself in languages?
+
 	35. Tell me something that is not in your resume.
+		Tell the interviewer that you created a programming language all by yourself in class 12th as a challenge by a friend.
+
 	36. How is Electronics and Communication related.
+		Electronics is the backbone of Communications in today's world. One can communicate without using electricity, but within a short-range. Electronic devices increase the range of communication. Because of it, we can talk to someone far away from us.
+
 	37. What is a signal? Types of Signals.
+		A signal is the fundamental quantity that represents an information that is to be transmitted or recieved. It is a function that conveys some information.
+
+		There are two types of signals:-
+			1. Analog
+				- Defined with respect to time
+				- Can be defined by a continuous variable
+				- Usually represented with sin or cos waves
+
+			2. Digital
+				- Can be represented with Discrete variables
+				- Only hold two types of values, 0 and 1 and hence easy to analyse.
+				- Sampling is done to replicate an analog signal
+
 	38. Do Python/C/C++-based interview questions.
 	39. Do ECE-based interview questions.
 	40. Do OOPS-based questions.
@@ -232,7 +366,29 @@ Technical Round:-
 		- Python supports negative indexing of arrays, which is not available in most of the programming languages. The last element being -1, the second last being -2 and so on.
 
 	50. What is Software Development Life Cycle? What are it's types?
+
+		- A process used by the software industry to design, develop and test professional/industry software.
+		- It is followed by all professional software companies.
+
+		Stages:-
+
+			1. Planning and Requirement Analysis
+			2. Defining Requirements
+			3. Designing the Product Architecture
+			4. Building or Developing the Product
+			5. Testing the Product
+			6. Deployment in the Market and Maintenance
+
+		- Models:
+			1. Waterfall Model
+			2. Agile
+			3. DevOps
+
 	51. Use of Volatile keyword.
+		- It is a qualifier applied to a variable when used. It is used to tell the compiler that the variable value may change at any time.
+
+		- It is intended to prevent the compiler from applying any optimizations on objects that can change in ways that cannot be determined by the compiler.
+
 
 	-> Any questions for the interviewer?
 
